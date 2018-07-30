@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>FetchAjax</title>
+</head>
+
+<body>
+    <h1>News</h1>
+    <div id="news">
+        loading...
+    </div>
+
+    <script>
+
+        const render = response => {
+            console.log(response)
+            const newsElement = (document.getElementById("news"));
+            newsElement.innerHTML = response;
+        }
+
+        const update = () => {
+            fetch("news.html").then(
+                
+                response => response.text()
+            ).then(
+                response => render(response)
+            )
+        }
+
+        setInterval(update,1000);
+
+
+    </script>
+</body>
+
+</html>
